@@ -32,7 +32,7 @@
         "ThingName": {
           "Ref": "ThingName"
         },
-        "ThingTypeName": "dispenserV1"
+        "ThingTypeName": "SecurityPanel"
       },
       "Type": "AWS::IoT::Thing"
     }
