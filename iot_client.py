@@ -38,13 +38,13 @@ backOffCore = ProgressiveBackOffCore()
 class IoTThing(AWSIoTMQTTClient):
     def __init__(self):
         self.serial_number = str(uuid.uuid4())
-        self.thing_name = "fh_workshop_" + self.serial_number
+        self.thing_name = "vf3_workshop_" + self.serial_number
         self.iot_endpoint = "{0}-ats.iot.{1}.amazonaws.com".format(
             os.environ.get("IOT_ENDPOINT"),
             os.environ.get("IOT_REGION")
         )
         print("Using endpoint: {0}".format(self.iot_endpoint))
-        super().__init__("fh_workshop_"+ self.serial_number)
+        super().__init__("vf3_workshop_"+ self.serial_number)
         self.private_key, self.private_key_pem = self.generate_private_key()
         self.certificate_pem = None
         self.csr = self.gen_csr(self.private_key)
@@ -60,14 +60,18 @@ class IoTThing(AWSIoTMQTTClient):
 
         # End MQTT client configuration
         self.initial_shadow = {
-            "battery_state_of_charge": random.choice([1, 10, 30, 90]),
+            "battery_state_of_charge": random.choice([1, 10, 30, 50, 70, 90]),
             "firmware_version": random.choice(["0.1", "1.0", "1.5", "2.0"]),
-            "temperature": 15,
-            "location": random.choice(['nyc', 'atl', 'chi', 'la', 'sf', 'bos'])
+            "panel_armed": random.choice(['yes', 'no']),
+            "motion_detected": random.choice(['yes', 'no', 'n/a']),
+            "main-door_open": random.choice(['yes', 'no', 'n/a']),
+            "main-windows_open": random.choice(['yes', 'no', 'n/a']),
+            "temperature": random.choice([0, 5, 10, 15, 20, 25, 30, 35]),
+            "location": random.choice(['norte', 'sur', 'este', 'oeste', 'centro'])
         }
         self.shadow = self.initial_shadow
 
-        print("Initialized new thing with serial: {0}".format("fh_workshop_"+self.serial_number))
+        print("Initialized new thing with serial: {0}".format("vf3_workshop_"+self.serial_number))
         self.fp_mqtt_client = None
         self.certificate_ownership_token = None
         self.cert_id = None
