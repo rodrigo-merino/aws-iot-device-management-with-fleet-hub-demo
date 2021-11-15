@@ -95,7 +95,7 @@
                     "PrivilegedMode": "true",
                     "Type": "LINUX_CONTAINER"
                 },
-                "Name": "AWS-IoT-DM-Demo",
+                "Name": "AWS-IoT-VF3-Demo",
                 "ServiceRole": {
                     "Fn::GetAtt": [
                         "CodebuildServiceRole",
@@ -186,7 +186,7 @@
                                     ],
                                     "Effect": "Allow",
                                     "Resource": {
-                                        "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/AWS-IoT-DM-Demo*"
+                                        "Fn::Sub": "arn:aws:logs:${AWS::Region}:${AWS::AccountId}:log-group:/aws/codebuild/AWS-IoT-VF3-Demo*"
                                     }
                                 }
                             ],
