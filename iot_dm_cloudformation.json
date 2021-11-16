@@ -51,11 +51,11 @@
         }
     },
     "Resources": {
-        "AWSIoTDMDemoDeviceSimulatorRepo": {
+        "AWSIoTVF3DemoDeviceSimulatorRepo": {
             "Condition": "ECRRepoDefault",
             "Type": "AWS::ECR::Repository"
         },
-        "AWSIoTDMDemoProject": {
+        "AWSIoTVF3DemoProject": {
             "Condition": "ECRRepoDefault",
             "Properties": {
                 "Artifacts": {
@@ -71,7 +71,7 @@
                         {
                             "Name": "IMAGE_REPO",
                             "Value": {
-                                "Ref": "AWSIoTDMDemoDeviceSimulatorRepo"
+                                "Ref": "AWSIoTVF3DemoDeviceSimulatorRepo"
                             }
                         },
                         {
@@ -158,7 +158,7 @@
                                     "Effect": "Allow",
                                     "Resource": {
                                         "Fn::GetAtt": [
-                                            "AWSIoTDMDemoDeviceSimulatorRepo",
+                                            "AWSIoTVF3DemoDeviceSimulatorRepo",
                                             "Arn"
                                         ]
                                     }
@@ -305,7 +305,7 @@
                                             },
                                             ".amazonaws.com/",
                                             {
-                                                "Ref": "AWSIoTDMDemoDeviceSimulatorRepo"
+                                                "Ref": "AWSIoTVF3DemoDeviceSimulatorRepo"
                                             }
                                         ]
                                     ]
